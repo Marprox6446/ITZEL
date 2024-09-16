@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    background: linear-gradient(135deg, #ff0000 0%, #00BFFF 100%); /* Rojo fuerte a azul cielo */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Aseguramos que el contenedor esté por encima de las barras */
+    position: relative;
+}
+
+h1 {
+    color: #ff0000; /* Rojo fuerte */
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #00BFFF; /* Sombra azul cielo */
+}
+
+.heart-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 82%, 18% 100%, 0% 38%); /* Corazón corregido */
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+
+.heart-container:hover {
+    transform: scale(1.1); /* Agranda el corazón al pasar el ratón por encima */
+}
+
+.heart-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    color: #00BFFF; /* Azul cielo */
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.message.show {
+    opacity: 1;
+    transform: scale(1.1); /* Un pequeño efecto de zoom al aparecer el texto */
+}
+
+/* Efecto de barras de sonido */
+.sound-bars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5; /* Las barras estarán debajo del contenido principal */
+    pointer-events: none; /* No permitir que interfiera con los clics */
+}
+
+.bar {
+    width: 10px;
+    height: 100px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: pulse 1s infinite ease-in-out;
+}
+
+.bar:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bar:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.bar:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.bar:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scaleY(0.4);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+    100% {
+        transform: scaleY(0.4);
+    }
+}
